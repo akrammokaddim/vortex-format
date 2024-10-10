@@ -17,9 +17,9 @@ While working on a movie and video streaming project, I faced the challenge of s
 
 ## Usage
 
-### Creation of Vortex Files
+### Creating Vortex Files
 
-To create a `.vtx` file, you'll need to bundle three components:
+To create a `.vtx` file, you need to bundle three components:
 
 1. **MP4 Video** - The primary video file.
 2. **JPG Image** - The thumbnail that will represent the video.
@@ -35,6 +35,58 @@ These three components are bundled together in the `.vtx` format for easy distri
 ### Streaming Vortex Files
 
 On the backend, the `.vtx` file can be processed to extract the video for streaming and display the thumbnail and metadata. A dedicated backend function is required to handle the streaming of the video content from the bundled `.vtx` file.
+
+## Command-Line Interface
+
+The Vortex tool supports several commands for creating, extracting, and updating `.vtx` files. Below is a detailed usage guide for the command-line interface (CLI).
+
+### Example Commands
+
+#### 1. Convert to VTX
+
+This command creates a `.vtx` file by bundling the video, thumbnail, and metadata together.
+
+```bash
+vortex convert -v <video.mp4> -i <thumbnail.jpg> -d <data.json> -o <output.vtx>
+```
+
+- `-v`: Path to the video file.
+- `-i`: Path to the thumbnail image file.
+- `-d`: Path to the JSON metadata file.
+- `-o`: Path for the output `.vtx` file. If not provided, it defaults to the video file name with `.vtx` extension.
+
+#### 2. Extract Content from VTX
+
+This command extracts the video, image, or metadata from a `.vtx` file.
+
+```bash
+vortex extract -i <input.vtx> <video|image|data> --save <output_file>
+```
+
+- `-i`: Path to the input `.vtx` file.
+- `<video|image|data>`: Type of content to extract.
+- `--save`: Path to save the extracted file.
+
+#### 3. Update VTX File
+
+This command updates an existing `.vtx` file with new video, thumbnail, or metadata.
+
+```bash
+vortex update <input.vtx> -v <video.mp4> -i <thumbnail.jpg> -d <data.json>
+```
+
+- `<input.vtx>`: Path to the `.vtx` file to update.
+- `-v`: New video file to update.
+- `-i`: New thumbnail image file to update.
+- `-d`: New JSON metadata file to update.
+
+#### 4. Help Command
+
+To display the help message with all available commands:
+
+```bash
+vortex help
+```
 
 ## Benefits
 
